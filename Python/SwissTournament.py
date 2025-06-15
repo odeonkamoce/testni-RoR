@@ -51,10 +51,10 @@ class Natjecatelj ():
         Natjecatelj.brojnatjecatelja -= 1
 
 
-imena = ['Mario', 'Ivan', 'Antea', 'Roko', 'Marina', 'Sabka']
+imena = ['Mario', 'Ivan', 'Antea', 'Roko', 'Marina', 'Sabka', 'Stjepan', 'Ana']
 natjecatelj = []
 
-for i in range (6): natjecatelj.append(Natjecatelj(imena[i], 0))
+for i in range (len(imena)): natjecatelj.append(Natjecatelj(imena[i], 0))
 
 print("-"*40)
 print(natjecatelj)
@@ -65,5 +65,5 @@ print("-"*40)
 print(f'\t\tP\tG')
 print(f'\t\t-\t-')
 
-for i in range(6):
+for i in range(len(imena)):
     print(f'{natjecatelj[i]}\t\t{natjecatelj[i].vpobjede}\t{natjecatelj[i].vgubitke}')
