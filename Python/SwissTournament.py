@@ -1,4 +1,4 @@
-from random import randint
+import random
 
 class TURNIR ():
 
@@ -10,6 +10,9 @@ class TURNIR ():
 
         self.zapocni()
     
+    
+    # početna metoda jednog kruga natjecanja koja će rasčlaniti
+    # košare u kojima se korisnici nalaze, zatražiti parove
     def zapocni (self):
 
         # pronalazak aktualnih vrsta košara
@@ -30,7 +33,23 @@ class TURNIR ():
         print (self.kosare)
         for k, v in self.podjela.items():
             print(f'{k} -- {v}')
-
+            
+        print(self.vrati_parove(*self.natjecatelji))
+    
+    
+    # metoda koja će za zadani popis natjecatelja vratiti parove; u ovom
+    # slučaju to će biti nastumično povezani natjecatelji
+    def vrati_parove (self, *natjecatelji):
+        if len(natjecatelji)%2 != 0:
+            print(f'Neću vratiti parove od neparnog broja igrača.')
+            return None
+        else:
+            temp    = list(natjecatelji)    # touple ne mogu mješati
+            parovi  = []                    # za vraćanje parova
+            random.shuffle(temp)            
+            for i in range (0, len(temp), 2):
+                parovi.append((temp[i], temp[i+1]))
+            return parovi
 
 class NATJECATELJ ():
     brojnatjecatelja = 0
@@ -93,12 +112,12 @@ print("-"*40)
 print(natjecatelj)
 
 # meč u kojem je 1 pobijedio 3
-natjecatelj[1].pobjeda
-natjecatelj[3].gubitak
+natjecatelj[0].pobjeda
+natjecatelj[1].gubitak
 
 # meč u kojem je 1 pobijedio 5
-natjecatelj[1].pobjeda
-natjecatelj[5].gubitak
+natjecatelj[3].pobjeda
+natjecatelj[2].gubitak
 
 print("-"*40)
 print(f'\t\tPob\tGub')
